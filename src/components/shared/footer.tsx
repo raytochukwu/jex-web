@@ -4,11 +4,17 @@ import { FaFacebook } from 'react-icons/fa'
 import { FaYoutube } from 'react-icons/fa'
 import { FaLinkedin } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
-
+import { IoLogoWhatsapp } from 'react-icons/io'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaInstagramSquare } from 'react-icons/fa'
 
 const Footer = () => {
+  const phoneNumber = '2348132865565' // Replace with your phone number in international format
+  const preFilledMessage = 'Hello, I would like to chat with you!' // Replace with your pre-filled message
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    preFilledMessage
+  )}`
   return (
     <div className="xl:w-[1394px] mx-[21px] md:h-[676px] h-[508px] rounded-[50px] xl:py-[93px] py-[49px] lg:px-[324px] bg-[#070A26] xl:mx-auto mb-[32px]">
       <div className="mx-auto w-[175px] mb-[32px]">
@@ -18,7 +24,7 @@ const Footer = () => {
         Empowering dreams,
         <br /> one crypto at a time
       </p>
-      <div className="xl:flex  hidden items-center justify-between text-white font-normal text-[18px] left-7 text-inter mb-[40px]">
+      <div className="xl:flex   hidden items-center justify-center gap-8 text-white font-normal text-[18px]  text-inter mb-[40px]">
         <Link href="/" className="  ">
           Home
         </Link>
@@ -42,7 +48,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="w-[213px] mx-auto flex justify-center items-center gap-[15px] mb-[60px]">
-          <div className="w-[42px] h-[42px] flex justify-center items-center ">
+          {/* <div className="w-[42px] h-[42px] flex justify-center items-center ">
             <RiTwitterXFill size={24} color="white" />
           </div>
           <div className="w-[42px] h-[42px] flex justify-center items-center ">
@@ -53,7 +59,23 @@ const Footer = () => {
           </div>
           <div className="w-[42px] h-[42px] flex justify-center items-center ">
             <FaLinkedin size={24} color="white" />
-          </div>
+          </div> */}
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[42px] h-[42px] flex justify-center items-center "
+          >
+            <IoLogoWhatsapp size={24} color="white" />
+          </a>
+          <a
+            href="https://www.instagram.com/jexcrypto/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[42px] h-[42px] flex justify-center items-center "
+          >
+            <FaInstagramSquare size={24} color="white" />
+          </a>
         </div>
       </div>
       <p className=" lg:text-[18px] text-[14px] text-center font-light leading-[25px] font-clash-display">

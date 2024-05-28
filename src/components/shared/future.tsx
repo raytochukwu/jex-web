@@ -4,7 +4,7 @@ import { BiMessageRoundedDetail } from 'react-icons/bi'
 import Link from 'next/link'
 
 const Future = () => {
-  const phoneNumber = '08132865565' // Replace with your phone number in international format
+  const phoneNumber = '2348132865565' // Replace with your phone number in international format
   const preFilledMessage = 'Hello, I would like to chat with you!' // Replace with your pre-filled message
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     preFilledMessage
@@ -22,10 +22,12 @@ const Future = () => {
         of cryptocurrency.
       </p>
       <div className="flex  gap-[24px]">
-        <div className="w-[154px] h-[48px] rounded-[30px] bg-white text-[#070A26] flex justify-center items-center border border-black gap-2">
-          <p className=" font-inter text-[16px] leading-6 ">Contact Us</p>
-          <FiMail />
-        </div>
+        <Link href="/contact" passHref>
+          <div className="w-[154px] h-[48px] rounded-[30px] bg-white text-[#070A26] flex justify-center items-center border border-black gap-2">
+            <p className=" font-inter text-[16px] leading-6 ">Contact Us</p>
+            <FiMail />
+          </div>
+        </Link>
         <Link
           href={whatsappLink}
           passHref

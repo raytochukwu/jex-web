@@ -1,22 +1,48 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AppSection from '../shared/appSection'
 import Future from '../shared/future'
 import Footer from '../shared/footer'
 import Header from '../shared/header'
 import BlogCard from '../shared/blog-card'
 import dummyData from '../shared/dummy-data'
+import axios from 'axios'
 
-const BlogPage = () => {
-  const [all, setAll] = useState(true)
-  const [investment, setInvestment] = useState(false)
-  const [crypto, setCrypto] = useState(false)
-  const investmentNewsData = dummyData?.filter(
-    (item) => item.topic === 'Investment News'
-  )
-  const CryptoNewsData = dummyData?.filter(
-    (item) => item.topic === 'Crypto News'
-  )
+interface Article {
+  title: string
+  description: string
+  url: string
+  urlToImage: string
+  source: { name: string }
+}
+
+const BlogPage: React.FC = () => {
+  // const [all, setAll] = useState(true)
+  // const [investment, setInvestment] = useState(false)
+  // const [crypto, setCrypto] = useState(false)
+  // const investmentNewsData = dummyData?.filter(
+  //   (item) => item.topic === 'Investment News'
+  // )
+  // const CryptoNewsData = dummyData?.filter(
+  //   (item) => item.topic === 'Crypto News'
+  // )
+  const [articles, setArticles] = useState<Article[]>([])
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY // Use NEXT_PUBLIC_ prefix for client-side env variables
+      try {
+        const res = await axios.get(
+          `https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=${API_KEY}`
+        )
+        setArticles(res.data.articles)
+      } catch (error) {
+        console.error('Error fetching articles:', error)
+      }
+    }
+
+    fetchArticles()
+  }, [])
   return (
     <div className="w-full">
       <div
@@ -28,7 +54,7 @@ const BlogPage = () => {
           <p className=" font-semibold xl:text-[52px] text-[36px]  xl:leading-[62px] leading-[46px] font-clash-display text-black mb-[30px]">
             We're going to share insightful <br /> stuff along the way.
           </p>
-          <div className=" w-[387px] rounded-[100px] border border-black bg-white border-b-[8px] border-r-[6px] h-[52px] flex mb-[65px]">
+          {/* <div className=" w-[387px] rounded-[100px] border border-black bg-white border-b-[8px] border-r-[6px] h-[52px] flex mb-[65px]">
             <button
               className={`flex rounded-[100px] justify-center items-center h-full  ${
                 all ? 'bg-[#CBFF2E]' : ''
@@ -59,9 +85,9 @@ const BlogPage = () => {
             >
               Crypto News
             </button>
-          </div>
+          </div> */}
         </div>
-        {all && (
+        {/* {all && (
           <div className="flex xl:flex-row justify-center items-center xl:justify-start xl:items-start flex-col xl:w-[1216px] w-[387px] sm:w-full gap-[22px] md:px-[21px] mx-auto mb-[81px]">
             <div className="lg:w-[70%]  ">
               {' '}
@@ -88,20 +114,22 @@ const BlogPage = () => {
               </div>
             </div>
           </div>
-        )}
-        {all && (
-          <div className=" xl:w-[1290px] sm:px-[21px] mx-auto grid xl:grid-cols-2  w-[387px] sm:w-full grid-flow-row gap-[42px]">
-            {dummyData.map((post) => (
+        )} */}
+
+        <div className=" xl:w-[1290px] sm:px-[21px] mx-auto grid xl:grid-cols-2 h-[1300px] overflow-y-scroll  w-[387px] sm:w-full grid-flow-row gap-[42px]">
+          {articles.map((article, index) => (
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
               <BlogCard
-                key={post.id}
-                topic={post.topic}
-                image={post.image}
-                message={post.messages}
+                key={index}
+                topic={'News'}
+                image={article.urlToImage}
+                message={article.title}
               />
-            ))}
-          </div>
-        )}
-        {investment && (
+            </a>
+          ))}
+        </div>
+
+        {/* {investment && (
           <div className=" xl:w-[1290px] mx-auto grid xl:grid-cols-2 w-[387px] sm:w-full grid-flow-row gap-[42px]">
             {investmentNewsData?.map((post) => (
               <BlogCard
@@ -112,8 +140,8 @@ const BlogPage = () => {
               />
             ))}
           </div>
-        )}{' '}
-        {crypto && (
+        )}{' '} */}
+        {/* {crypto && (
           <div className=" xl:w-[1290px] mx-auto grid xl:grid-cols-2 w-[387px] sm:w-full grid-flow-row gap-[42px]">
             {CryptoNewsData?.map((post) => (
               <BlogCard
@@ -124,7 +152,7 @@ const BlogPage = () => {
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
       <AppSection />
       <Future />
