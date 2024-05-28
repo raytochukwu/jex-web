@@ -76,7 +76,7 @@ const AboutUs = () => {
 
         <div
           className="  sm:w-full xl:h-[522px] h-[263px] bg-no-repeat  bg-center bg-cover "
-          style={{ backgroundImage: 'url("/images/BACKGROUND.png")' }}
+          style={{ backgroundImage: 'url("/images/Frame4.png")' }}
         ></div>
       </div>
 
