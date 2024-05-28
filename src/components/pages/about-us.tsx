@@ -16,10 +16,7 @@ import { faqData } from '../shared/faq-data.js'
 const AboutUs = () => {
   return (
     <div className="w-full">
-      <div
-        className="relative w-full xl:h-[1091px] xl:mb-[132px]  mb-[60px] bg-repeat-x"
-        style={{ backgroundImage: 'url("/images/BACKGROUND.png")' }}
-      >
+      <div className="relative w-full xl:h-[1091px] xl:mb-[132px]  mb-[60px] bg-repeat-x bg-[url('/images/BACKGROUND.png')]">
         <Header />
         <div className="w-full  pt-[108px] mb-[27px] ">
           <div className="xl:w-[1350px] xl:h-[409px] px-[30px] xl:py-[75px] pt-[31px] flex xl:flex-row flex-col  xl:pt-[108px] mx-auto ">
