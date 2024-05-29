@@ -17,23 +17,33 @@ interface Article {
 
 const BlogPage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const API_KEY = '559dcd7e75ae4ac8b608c46fbc3fed0e'
       try {
-        const res = await axios.get(
-          `https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=${API_KEY}`
-        )
-        console.log(res.data.articles)
+        const res = await axios.get('/api/fetchArticles')
+        console.log('Fetched Articles:', res.data.articles)
         setArticles(res.data.articles)
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching articles:', error)
+        setError('Failed to fetch articles')
+        setLoading(false)
       }
     }
 
     fetchArticles()
   }, [])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error}</div>
+  }
 
   return (
     <div className="w-full">
