@@ -12,22 +12,33 @@ interface Article {
 
 const BlogSection: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const API_KEY = '559dcd7e75ae4ac8b608c46fbc3fed0e' // Use NEXT_PUBLIC_ prefix for client-side env variables
       try {
-        const res = await axios.get(
-          `https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=${API_KEY}`
-        )
+        const res = await axios.get('/api/fetchArticles')
+        console.log('Fetched Articles:', res.data.articles)
         setArticles(res.data.articles)
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching articles:', error)
+        setError('Failed to fetch articles')
+        setLoading(false)
       }
     }
 
     fetchArticles()
   }, [])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error}</div>
+  }
   const shuffleArray = (array: any[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
