@@ -15,7 +15,7 @@ const BlogSection: React.FC = () => {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY // Use NEXT_PUBLIC_ prefix for client-side env variables
+      const API_KEY = '559dcd7e75ae4ac8b608c46fbc3fed0e' // Use NEXT_PUBLIC_ prefix for client-side env variables
       try {
         const res = await axios.get(
           `https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=${API_KEY}`
