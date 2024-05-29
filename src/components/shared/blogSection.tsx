@@ -28,7 +28,14 @@ const BlogSection: React.FC = () => {
 
     fetchArticles()
   }, [])
-  console.log(articles)
+  const shuffleArray = (array: any[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+  }
+  const randomArticles = shuffleArray([...articles]).slice(0, 3)
   return (
     <div className="sm:w-full mb-[119px] w-[386px] mx-auto">
       <p className="lg:text-[49px] text-[32px] font-semibold lg:leading-[59px] leading-[42px] text-center text-black font-clash-display mb-[10px]">
@@ -40,7 +47,7 @@ const BlogSection: React.FC = () => {
         <br /> blockchain technology, and financial empowerment.
       </p>
       <div className="xl:w-[1277px] w-[386px] xl:h-[506px] mx-auto rounded-[50px] border border-black border-b-[8px] xl:px-[32px] px-[0px] xl:py-[49px] py-[25px] flex xl:flex-row flex-col justify-center items-center gap-[26px]">
-        {articles.slice(0, 3).map((article, index) => (
+        {randomArticles?.map((article, index) => (
           <a
             href={article.url}
             target="_blank"
@@ -48,13 +55,10 @@ const BlogSection: React.FC = () => {
             className="xl:w-[386px] w-[354px] h-full"
             key={index}
           >
-            <div className="mb-[28px] xl:w-[386px] w-[354] xl:h-[270px] h-[248px]">
-              <img
-                src={article.urlToImage}
-                alt="hand"
-                className="w-full h-full"
-              />
-            </div>
+            <div
+              className="mb-[28px] xl:w-[386px] w-[354] xl:h-[270px] h-[248px]  bg-cover bg-center "
+              style={{ backgroundImage: `url(${article.urlToImage})` }}
+            ></div>
             <p className="font-inter font-extrabold text-[14px] leading-[18px] text-[#863DFF] mb-[5px]">
               News
             </p>

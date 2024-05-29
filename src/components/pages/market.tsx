@@ -99,7 +99,7 @@ const Market = () => {
           </div>
 
           <div className="overflow-x-scroll">
-            <table className="w-[1268px] bg-white  ">
+            <table className="w-[1230px] bg-white  ">
               <thead
                 className="w-full mb-[10px]  text-left h-[84px] border border-black  "
                 style={{ borderRadius: '25px' }}

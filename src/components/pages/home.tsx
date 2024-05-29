@@ -40,7 +40,7 @@ const LandingPage = () => {
   const [fiatCurrencies, setFiatCurrencies] = useState<string[]>([])
   const [cryptoCurrencies, setCryptoCurrencies] = useState<CryptoCurrency[]>([])
   const [fiatCurrency, setFiatCurrency] = useState<string>('usd')
-  const [cryptoCurrency, setCryptoCurrency] = useState<string>('btc')
+  const [cryptoCurrency, setCryptoCurrency] = useState<string>('bitcoin')
   const [usdAmount, setUsdAmount] = useState<number>(1)
   const [cryptoAmount, setCryptoAmount] = useState<number>(0)
   const [exchangeRate, setExchangeRate] = useState<number>(0)
@@ -85,7 +85,7 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchExchangeRate = async () => {
       const cryptoCurrencyData = cryptoCurrencies.find(
-        (currency) => currency.symbol === cryptoCurrency
+        (currency) => currency.id === cryptoCurrency
       )
       if (!cryptoCurrencyData) {
         console.error('Cryptocurrency not found')
