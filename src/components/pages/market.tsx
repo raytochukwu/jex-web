@@ -8,6 +8,7 @@ import Footer from '../shared/footer'
 import Header from '../shared/header'
 import CryptoChart from '../shared/chart'
 import { RiSearchLine } from 'react-icons/ri'
+import Link from 'next/link'
 
 interface Crypto {
   id: string
@@ -148,9 +149,11 @@ const Market = () => {
                       />
                     </td>
                     <td className="py-2 px-4">
-                      <button className="text-blue-500 hover:underline">
-                        Trade Now
-                      </button>
+                      <Link href="/contact " passHref>
+                        <button className="text-blue-500 hover:underline">
+                          Trade Now
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -159,6 +162,24 @@ const Market = () => {
           </div>
 
           <div className="flex justify-between mt-4">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className=" w-[172px]  py-[8px]   px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
+              style={{
+                borderWidth: '1px 6px 8px 1px',
+                borderStyle: 'solid',
+                borderColor: '#070A26',
+                background: 'white',
+              }}
+            >
+              Previous
+            </button>
+
+            <span className="px-4 py-2">
+              Page {currentPage} of {totalPages}
+            </span>
+
             <button
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
@@ -173,23 +194,6 @@ const Market = () => {
               }}
             >
               Next
-            </button>
-
-            <span className="px-4 py-2">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className=" w-[172px]  py-[8px]   px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
-              style={{
-                borderWidth: '1px 6px 8px 1px',
-                borderStyle: 'solid',
-                borderColor: '#070A26',
-                background: 'white',
-              }}
-            >
-              Previous
             </button>
           </div>
         </div>

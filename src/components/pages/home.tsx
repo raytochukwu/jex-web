@@ -21,6 +21,7 @@ import Future from '../shared/future'
 import AppSection from '../shared/appSection'
 import BlogSection from '../shared/blogSection'
 import Link from 'next/link'
+import Select from 'react-select'
 
 interface CryptoCurrency {
   id: string
@@ -123,6 +124,30 @@ const LandingPage = () => {
     setUsdAmount(amount * exchangeRate)
   }
 
+  const options = cryptoCurrencies.map((currency) => {
+    let label = currency.symbol.toUpperCase()
+    if (label.length < 3) {
+      label = label.padEnd(3, '*') // Pad the symbol to ensure it has at least 3 characters
+    }
+    return {
+      value: currency.id,
+      label: label,
+    }
+  })
+
+  const handleChange = (selectedOption: any) => {
+    setCryptoCurrency(selectedOption.value)
+  }
+
+  const optionS = fiatCurrencies.map((currency) => ({
+    value: currency,
+    label: currency.toUpperCase(), // Convert to uppercase
+  }))
+
+  const handleChangeS = (selectedOptionS: any) => {
+    setFiatCurrency(selectedOptionS.value)
+  }
+
   return (
     <div className="w-full ">
       <div
@@ -152,18 +177,20 @@ const LandingPage = () => {
           </p>
           <div className="w-full flex justify-between mt-[60px] mb-[113px]">
             <div className="flex gap-4 ">
-              <div
-                className=" w-[172px] md:py-[16px] py-[10px]  gap-[12px] md:px-[20px]   px-[18px] rounded-[30px] items-center justify-center flex "
-                style={{
-                  borderWidth: '1px 6px 8px 1px',
-                  borderStyle: 'solid',
-                  borderColor: '#070A26',
-                  background: '#CBFF2E',
-                }}
-              >
-                <p className=" text-[18px] "> Let’s Talk</p>
-                <FiMail size={24} />
-              </div>
+              <Link href="/contact " passHref>
+                <div
+                  className=" w-[172px] md:py-[16px] py-[10px]  gap-[12px] md:px-[20px]   px-[18px] rounded-[30px] items-center justify-center flex "
+                  style={{
+                    borderWidth: '1px 6px 8px 1px',
+                    borderStyle: 'solid',
+                    borderColor: '#070A26',
+                    background: '#CBFF2E',
+                  }}
+                >
+                  <p className=" text-[18px] "> Let’s Talk</p>
+                  <FiMail size={24} />
+                </div>
+              </Link>
               <Link
                 href={whatsappLink}
                 passHref
@@ -230,21 +257,52 @@ const LandingPage = () => {
                 onChange={handleUsdChange}
                 style={{ width: '45%' }}
               />
-              <div className=" border-l-[1px] border-black h-full pl-[12px] flex items-center">
-                <div className="h-[31px] w-[31px] rounded-[50%] bg-[#CBFF2E] flex justify-center items-center mr-[8px]">
+              <div className=" border-l-[1px] border-black h-full pl-[12px] flex justify-end items-center">
+                <div className="h-[31px] w-[31px] rounded-[50%] bg-[#CBFF2E] flex justify-center items-center">
                   <FcMoneyTransfer size={20} />
                 </div>
-                <select
-                  value={fiatCurrency}
-                  onChange={(e) => setFiatCurrency(e.target.value)}
-                  style={{ width: '60%' }}
-                >
-                  {fiatCurrencies.map((currency) => (
-                    <option key={currency} value={currency}>
-                      {currency.toUpperCase()}
-                    </option>
-                  ))}
-                </select>
+                <Select
+                  value={optionS.find(
+                    (option) => option.value === fiatCurrency
+                  )}
+                  onChange={handleChangeS}
+                  options={optionS}
+                  styles={{
+                    container: (provided) => ({
+                      ...provided,
+                      width: 110,
+                    }),
+                    control: (provided) => ({
+                      ...provided,
+                      backgroundColor: 'white',
+                      color: 'black',
+                      border: 'none',
+                      display: 'flex',
+                    }),
+                    singleValue: (provided) => ({
+                      ...provided,
+                      color: 'black',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }),
+                    dropdownIndicator: (provided) => ({
+                      ...provided,
+                      display: 'flex',
+                      alignItems: 'center',
+                    }),
+                    indicatorSeparator: () => ({
+                      display: 'none', // Removes the vertical line
+                    }),
+                    option: (provided) => ({
+                      ...provided,
+                      backgroundColor: 'white',
+                      color: 'black',
+                      '&:hover': {
+                        backgroundColor: '#f0f0f0',
+                      },
+                    }),
+                  }}
+                />
               </div>
             </div>
             <div
@@ -254,13 +312,13 @@ const LandingPage = () => {
                 type="number"
                 value={cryptoAmount}
                 onChange={handleCryptoChange}
-                style={{ width: '60%', marginRight: '20px' }}
+                style={{ width: '60%', marginRight: '5px' }}
               />
-              <div className=" border-l-[1px] border-black h-full pl-[12px] flex items-center justify-end">
-                <div className="h-[31px] w-[31px] rounded-[50%] bg-[#F7931A] flex justify-center items-center mr-[8px]">
+              <div className=" border-l-[1px] border-black h-full pl-[6px] flex items-center justify-end">
+                <div className="h-[31px] w-[31px] rounded-[50%] bg-[#F7931A] flex justify-center items-center mr-[0px]">
                   <GiTwoCoins color="white" size={20} />
                 </div>
-                <select
+                {/* <select
                   value={cryptoCurrency}
                   onChange={(e: any) => setCryptoCurrency(e.target.value)}
                   style={{ width: '70%', marginRight: '0', paddingRight: '0' }}
@@ -270,15 +328,64 @@ const LandingPage = () => {
                       {currency.symbol.toUpperCase()}
                     </option>
                   ))}
-                </select>
+                </select> */}
+                <Select
+                  value={options.find(
+                    (option) => option.value === cryptoCurrency
+                  )}
+                  onChange={handleChange}
+                  options={options}
+                  styles={{
+                    container: (provided) => ({
+                      ...provided,
+                      width: 110,
+                    }),
+                    control: (provided) => ({
+                      ...provided,
+                      backgroundColor: 'white',
+                      color: 'black',
+                      border: 'none',
+
+                      display: 'flex',
+                    }),
+                    singleValue: (provided) => ({
+                      ...provided,
+                      color: 'black',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }),
+                    dropdownIndicator: (provided) => ({
+                      ...provided,
+                      display: 'flex',
+                      alignItems: 'center',
+                    }),
+                    indicatorSeparator: () => ({
+                      display: 'none', // Removes the vertical line
+                    }),
+                    option: (provided) => ({
+                      ...provided,
+                      backgroundColor: 'white',
+                      color: 'black',
+                      '&:hover': {
+                        backgroundColor: '#f0f0f0',
+                      },
+                    }),
+                  }}
+                />
               </div>
             </div>
-            <div
-              onClick={() => setExchange(!exchange)}
-              className={`${customDivClass} bg-[#CBFF2E]  cursor-pointer justify-center `}
+            <Link
+              href={whatsappLink}
+              passHref
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Exchange
-            </div>
+              <div
+                className={`${customDivClass} bg-[#CBFF2E]  cursor-pointer justify-center `}
+              >
+                Exchange
+              </div>
+            </Link>
           </div>
         </div>
       </div>

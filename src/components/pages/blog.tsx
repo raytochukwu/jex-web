@@ -67,7 +67,7 @@ const BlogPage: React.FC = () => {
             >
               <BlogCard
                 topic={'News'}
-                image={article?.urlToImage || '/path/to/default-image.jpg'}
+                image={article?.urlToImage || '/images/COIN.png'}
                 message={article.title}
               />
             </a>
