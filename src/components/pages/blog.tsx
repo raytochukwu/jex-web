@@ -44,6 +44,14 @@ const BlogPage: React.FC = () => {
   if (error) {
     return <div>{error}</div>
   }
+  const shuffleArray = (array: any[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+  }
+  const randomArticles = shuffleArray([...articles])
 
   return (
     <div className="w-full">
@@ -58,7 +66,7 @@ const BlogPage: React.FC = () => {
           </p>
         </div>
         <div className="xl:w-[1290px] sm:px-[21px] mx-auto grid xl:grid-cols-2 h-[1300px] overflow-y-scroll w-[387px] sm:w-full grid-flow-row gap-[42px]">
-          {articles?.map((article, index) => (
+          {randomArticles?.map((article, index) => (
             <a
               href={article.url}
               target="_blank"
@@ -67,7 +75,9 @@ const BlogPage: React.FC = () => {
             >
               <BlogCard
                 topic={'News'}
-                image={article?.urlToImage || '/images/COIN.png'}
+                image={
+                  article?.urlToImage ? article?.urlToImage : '/images/COIN.png'
+                }
                 message={article.title}
               />
             </a>

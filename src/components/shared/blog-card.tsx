@@ -18,8 +18,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ image, topic, message }) => {
     <div className="w-full  rounded-[20px] ">
       <div
         className="h-[435px] w-full mb-[31px] rounded-[20px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${imgSrc})` }}
-        onError={handleError}
+        style={{
+          backgroundImage: `url(${image ? image : '/images/COIN.png'})`,
+        }}
       >
         {/* Optionally, you can add an overlay or content inside this div */}
       </div>

@@ -68,7 +68,11 @@ const BlogSection: React.FC = () => {
           >
             <div
               className="mb-[28px] xl:w-[386px] w-[354] xl:h-[270px] h-[248px]  bg-cover bg-center "
-              style={{ backgroundImage: `url(${article.urlToImage})` }}
+              style={{
+                backgroundImage: `url(${
+                  article?.urlToImage ? article?.urlToImage : '/images/COIN.png'
+                })`,
+              }}
             ></div>
             <p className="font-inter font-extrabold text-[14px] leading-[18px] text-[#863DFF] mb-[5px]">
               News
