@@ -14,8 +14,9 @@ import Link from 'next/link'
 
 const ContactUs = () => {
   const customDivClass = `md:text-[24px] text-[18px] md:w-[368px] w-[320px] h-[67px] flex items-center border md:border-b-[10px] border-b-[8px] md:border-r-[10px] border-r-[8px] rounded-[68px] border-black font-inter font-semibold leading-[30px]`
-  const phoneNumber = '08132865565' // Replace with your phone number in international format
-  const preFilledMessage = 'Hello, I would like to chat with you!' // Replace with your pre-filled message
+  const phoneNumber = '2349063575264' // Replace with your phone number in international format
+  const preFilledMessage =
+    "Hello! I'm interested in learning more about your crypto exchange services. Could you please provide me with more information? Thank you!" // Replace with your pre-filled message
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     preFilledMessage
   )}`
