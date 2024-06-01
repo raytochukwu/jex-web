@@ -165,11 +165,8 @@ const Market = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className=" w-[172px]  py-[8px]   px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
+              className=" w-[172px]  py-[8px] border-[#070A26] border border-r-[6px] border-b-[8px] hover:border-r-[1px] hover:border-b-[1px]  px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
               style={{
-                borderWidth: '1px 6px 8px 1px',
-                borderStyle: 'solid',
-                borderColor: '#070A26',
                 background: 'white',
               }}
             >
@@ -185,11 +182,8 @@ const Market = () => {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className=" w-[172px]  py-[8px]   px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
+              className=" w-[172px]  py-[8px] border-[#070A26] border border-r-[6px] border-b-[8px] hover:border-r-[1px] hover:border-b-[1px]  px-[12px]  gap-[12px] rounded-[30px] items-center justify-center flex "
               style={{
-                borderWidth: '1px 6px 8px 1px',
-                borderStyle: 'solid',
-                borderColor: '#070A26',
                 background: 'white',
               }}
             >

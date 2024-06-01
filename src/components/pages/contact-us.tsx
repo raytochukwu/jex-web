@@ -124,14 +124,14 @@ const ContactUs = () => {
                     >
                       <button
                         type="button"
-                        className="border border-r-[6px] border-b-[8px] border-l-[0px] border-black gap-[8px] flex justify-center items-center py-[8px] px-[14px] rounded-[30px] bg-[#CBFF2E]"
+                        className="border border-r-[6px] border-b-[8px] hover:border-r-[1px] hover:border-b-[1px] border-l-[0px] border-black gap-[8px] flex justify-center items-center py-[8px] px-[14px] rounded-[30px] bg-[#CBFF2E]"
                       >
                         Whatsapp <BiMessageRoundedDetail />
                       </button>
                     </Link>
                     <button
                       type="submit"
-                      className="border border-r-[6px] border-b-[8px] border-l-[0px] border-black gap-[8px] flex justify-center items-center py-[8px] px-[14px] rounded-[30px] bg-[#CBFF2E]"
+                      className="border border-r-[6px] hover:border-r-[1px] hover:border-b-[1px] border-b-[8px] border-l-[0px] border-black gap-[8px] flex justify-center items-center py-[8px] px-[14px] rounded-[30px] bg-[#CBFF2E]"
                     >
                       Submit <FiMail />
                     </button>

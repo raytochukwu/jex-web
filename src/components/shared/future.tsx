@@ -35,7 +35,7 @@ const Future = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="w-[154px] h-[48px] rounded-[30px]  bg-inherit text-[#070A26] flex justify-center items-center border border-r-[6px] border-b-[8px] border-black gap-2">
+          <div className="w-[154px] h-[48px] rounded-[30px]  hover:border-r-[1px] hover:border-b-[1px]   bg-inherit text-[#070A26] flex justify-center items-center border border-r-[6px] border-b-[8px] border-black gap-2">
             <p className=" font-inter text-[16px] leading-6 ">Whatsapp</p>
             <BiMessageRoundedDetail size={24} />
           </div>

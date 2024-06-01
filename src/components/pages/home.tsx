@@ -33,7 +33,8 @@ interface CryptoCurrency {
 const LandingPage = () => {
   const customDivClass = `md:text-[24px] text-[18px] md:w-[368px] w-[320px] h-[67px] flex items-center border md:border-b-[10px] border-b-[8px] md:border-r-[10px] border-r-[8px] rounded-[68px] border-black font-inter font-semibold leading-[30px]`
   const phoneNumber = '2349063575264' // Replace with your phone number in international format
-  const preFilledMessage = "Hello! I'm interested in learning more about your crypto exchange services. Could you please provide me with more information? Thank you!" // Replace with your pre-filled message
+  const preFilledMessage =
+    "Hello! I'm interested in learning more about your crypto exchange services. Could you please provide me with more information? Thank you!" // Replace with your pre-filled message
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     preFilledMessage
   )}`
@@ -179,11 +180,8 @@ const LandingPage = () => {
             <div className="flex gap-4 ">
               <Link href="/contact " passHref>
                 <div
-                  className=" w-[172px] md:py-[16px] py-[10px]  gap-[12px] md:px-[20px]   px-[18px] rounded-[30px] items-center justify-center flex "
+                  className=" w-[172px] md:py-[16px] py-[10px] border-[#070A26] border border-r-[6px] border-b-[8px] hover:border-r-[1px] hover:border-b-[1px]  gap-[12px] md:px-[20px]   px-[18px] rounded-[30px] items-center justify-center flex "
                   style={{
-                    borderWidth: '1px 6px 8px 1px',
-                    borderStyle: 'solid',
-                    borderColor: '#070A26',
                     background: '#CBFF2E',
                   }}
                 >
@@ -198,11 +196,8 @@ const LandingPage = () => {
                 rel="noopener noreferrer"
               >
                 <div
-                  className=" w-[172px] md:py-[16px] py-[10px] md:px-[20px]   px-[18px]  gap-[12px] rounded-[30px] items-center justify-center flex "
+                  className=" w-[172px] md:py-[16px] py-[10px] md:px-[20px] border-[#070A26] border border-r-[6px] border-b-[8px] hover:border-r-[1px] hover:border-b-[1px]   px-[18px]  gap-[12px] rounded-[30px] items-center justify-center flex "
                   style={{
-                    borderWidth: '1px 6px 8px 1px',
-                    borderStyle: 'solid',
-                    borderColor: '#070A26',
                     background: 'white',
                   }}
                 >
@@ -212,7 +207,7 @@ const LandingPage = () => {
               </Link>
             </div>
             <Link href="/market" passHref>
-              <div className="w-[220px] hidden   lg:flex md:py-[16px] py-[10px] md:px-[20px]   px-[18px] rounded-tl-[30px] rounded-tr-[30px] rounded-tl-0 rounded-br-[30px] border-t-1 border border-black  border-t-6 border-r-8 border-b-8 border-l-6 bg-yellow-200">
+              <div className="w-[220px] hidden   lg:flex md:py-[16px] py-[10px] md:px-[20px]   px-[18px] rounded-tl-[30px] rounded-tr-[30px] rounded-tl-0  hover:border-r-[1px] hover:border-b-[1px]  rounded-br-[30px] border-t-1 border border-black  border-t-6 border-r-8 border-b-8 border-l-6 bg-yellow-200">
                 <p className="text-[18px] pr-[12px] "> Check Insights </p>
                 <GrDocumentPerformance size={20} />
               </div>
@@ -381,7 +376,7 @@ const LandingPage = () => {
               rel="noopener noreferrer"
             >
               <div
-                className={`${customDivClass} bg-[#CBFF2E]  cursor-pointer justify-center `}
+                className={`${customDivClass} bg-[#CBFF2E]  hover:border-r-[1px] hover:border-b-[1px]  cursor-pointer justify-center `}
               >
                 Exchange
               </div>

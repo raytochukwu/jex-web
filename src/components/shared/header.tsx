@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <Link
               href={'/contact'}
-              className=" text-center w-[119px] h-[36px] px-[14px] flex items-center gap-1  rounded-[30px] bg-[#CBFF2E] border-t-[1px] border-r-[6px] border-b-[8px] border-l-[1px] border-[solid] border-[#070A26]"
+              className=" text-center w-[119px] h-[36px] px-[14px] flex items-center gap-1  rounded-[30px] bg-[#CBFF2E] border-t-[1px] border-r-[6px] hover:border-r-[1px] hover:border-b-[1px] border-b-[8px] border-l-[1px] border-[solid] border-[#070A26]"
             >
               <p className="font-inter text-[14px] font-medium leading-[20px] text-black ">
                 Let’s Talk
