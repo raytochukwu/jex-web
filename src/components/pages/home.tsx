@@ -234,12 +234,12 @@ const LandingPage = () => {
               <p className="md:text-[24px] text-[18px] font-semibold leading-8 md:ml-[14px] ml-[12px] mr-[12px] md:mr-[14px]">
                 {fiatCurrency.toUpperCase()}
               </p>
-              <div
+              {/* <div
                 onClick={() => setExchange(!exchange)}
                 className="md:h-[32px] cursor-pointer h-[20px] md:w-[32px]  w-[20px] bg-[#CBFF2E] rounded-[50%] flex justify-center items-center"
               >
                 <HiOutlineRefresh size={20} />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className=" flex-col md:flex-row sm:flex  justify-center    items-center w-full">
