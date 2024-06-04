@@ -1,8 +1,5 @@
 import React from 'react'
-import { RiTwitterXFill } from 'react-icons/ri'
-import { FaFacebook } from 'react-icons/fa'
-import { FaYoutube } from 'react-icons/fa'
-import { FaLinkedin } from 'react-icons/fa'
+
 import { FiMail } from 'react-icons/fi'
 import { IoLogoWhatsapp } from 'react-icons/io'
 import Image from 'next/image'
@@ -16,6 +13,8 @@ const Footer = () => {
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     preFilledMessage
   )}`
+
+  const currentYear = new Date().getFullYear()
   return (
     <div className="xl:w-[1394px] mx-[21px] md:h-[676px] h-[508px] rounded-[50px] xl:py-[93px] py-[49px] lg:px-[324px] bg-[#070A26] xl:mx-auto mb-[32px]">
       <div className="mx-auto w-[175px] mb-[32px]">
@@ -80,7 +79,7 @@ const Footer = () => {
         </div>
       </div>
       <p className=" lg:text-[18px] text-[14px] text-center font-light leading-[25px] font-clash-display">
-        © 2024 JEX Technologies. All rights reserved.
+        © {currentYear} JEX Technologies. All rights reserved.
       </p>
     </div>
   )
