@@ -550,8 +550,7 @@ const LandingPage = () => {
             Trade <br className=" hidden lg:block" /> with us?
           </p>
           <p className=" text-[16px]  font-normal leading-[24px] text-center text-[#757575] font-inter mb-[80px]">
-            Explore diverse options: cryptocurrencies, gift cards, money pick up
-            and
+            Explore diverse options: cryptocurrencies, gift cards and
             <br className=" hidden lg:block" /> more. Unlock endless
             possibilities for buying and trading with our
             <br className=" hidden lg:block" />
